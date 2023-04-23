@@ -1,0 +1,48 @@
+@use 'sass:color';
+
+@use '@material/theme/color-palette';
+
+// Svelte Colors!
+@use '@material/theme/index' as theme with (
+  $primary: #49BBED,
+  $secondary: #676778,
+  $surface: #fff,
+  $background: #fff,
+  $error: color-palette.$red-900
+  );
+
+@use '@smui/snackbar/style' as smui-snackabar;
+@use '@material/snackbar/mixins' as snackbar;
+@use '@material/theme/theme-color';
+
+// @use 'smui-theme';
+@use '@material/elevation/mdc-elevation';
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: theme.$surface;
+  color: theme.$on-surface;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+a:visited {
+  color: inherit;
+  text-decoration: none
+}
+
+.mdc-snackbar.demo-error {
+  @include snackbar.fill-color(color-palette.$red-500);
+  @include snackbar.label-ink-color(
+    theme-color.accessible-ink-color(color-palette.$red-500)
+  );
+
+  button {
+    color: white; 
+  }
+}
