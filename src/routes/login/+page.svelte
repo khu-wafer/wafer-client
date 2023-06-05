@@ -5,16 +5,25 @@
 	import IconButton from '@smui/icon-button';
 	import Textfield from '@smui/textfield';
 	import Snackbar, { Actions, Label as SnackbarLabel } from '@smui/snackbar';
+	import type { ActionData } from './$types';
+	import { goto } from '$app/navigation';
 
-	export let form;
+	export let form: ActionData;
 
-	let id = '';
+	let email = '';
 	let password = '';
 
 	let snackbarWithClose: Snackbar;
 
 	onMount(() => {
 		if (form?.message) snackbarWithClose.open();
+
+		if (localStorage.getItem('user')) goto('/');
+
+		if (form?.id) {
+			localStorage.setItem('user', form?.id);
+			goto('/');
+		}
 	});
 </script>
 
@@ -22,13 +31,13 @@
 	<div class="logo">Wafer</div>
 	<h1 class="title">LOGIN</h1>
 	<h2 class="sub-title">Wafer Management Sysytem</h2>
-	<form class="login-form" method="POST">
+	<form class="login-form" method="POST" action="?/login">
 		<Textfield
 			type="text"
 			variant="outlined"
-			bind:value={id}
-			input$name="id"
-			label="ID"
+			bind:value={email}
+			input$name="email"
+			label="EMAIL"
 			required
 			style="width: 100%; height: 50px;"
 		/>
