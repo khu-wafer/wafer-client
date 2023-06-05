@@ -2,12 +2,14 @@
 	import Sidebar from '../../../components/common/Sidebar.svelte';
 	import ObjectCard from '../../../components/card/ObjectCard.svelte';
 	import LineCard from '../../../components/card/LineCard.svelte';
-	import { CARD_MOCKS } from '../../../constants/mocks/mocks';
 
 	import Switch from '@smui/switch';
 	import FormField from '@smui/form-field';
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	let objectMode = false;
 	let searchValue = '';
@@ -36,7 +38,7 @@
 			</div>
 		</div>
 		<ul class="card-list">
-			{#each CARD_MOCKS as card}
+			{#each data.data as card}
 				<li class="card-item">
 					{#if objectMode}
 						<ObjectCard {...card} />

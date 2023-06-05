@@ -3,14 +3,14 @@
 	import Button, { Label } from '@smui/button';
 
 	let clicked = 0;
-	export let id: number, title: string;
+	export let id: string, name: string;
 </script>
 
 <Card>
 	<div class="main-content {id}">
 		<Content>
 			<h2>
-				{title}
+				{name}
 			</h2>
 		</Content>
 		<Actions>

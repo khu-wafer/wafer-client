@@ -5,12 +5,12 @@
 
 	let clicked = 0;
 
-	export let id: number,
-		title: string,
-		warehousingDate: string,
-		releaseDate: string,
-		departures: string,
+	export let id: string,
+		name: string,
+		departure: string,
 		arrivals: string,
+		shipmentDate: string,
+		arrivalDate: string,
 		imgUrl: string;
 </script>
 
@@ -18,13 +18,13 @@
 	<PrimaryAction on:click={() => clicked++}>
 		<div class="main-content {id}">
 			<Content class="mdc-typography--body2">
-				<h2 class="mdc-typography--headline6" style="margin: 0;">{title}</h2>
+				<h2 class="mdc-typography--headline6" style="margin: 0;">{name}</h2>
 				<h3 class="mdc-typography--subtitle2" style="margin: 0 0 10px; color: #888;">
-					{warehousingDate} / {releaseDate}
+					{arrivalDate} / {shipmentDate}
 				</h3>
 				<h4>Departure</h4>
 
-				{departures}
+				{departure}
 
 				<h4>Arrivals</h4>
 				{arrivals}
