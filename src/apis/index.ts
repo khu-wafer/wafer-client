@@ -8,3 +8,7 @@ const axiosClient = axios.create({
 export const postLogin = async (email: string, password: string) => {
 	return await axiosClient.post('/user/login', { email, password });
 };
+
+export const getWarehouse = async () => {
+	return await axiosClient.get('/warehouse');
+};
